@@ -1,0 +1,18 @@
+Quiz-Game:
+- GUI basierte Anwendung
+	- Swing
+	- Callbacks
+	- Actions
+- Modulare Fragen (Kategorien)
+	- IO
+	- JSON (Maven)
+	- Randomizer
+- Mehrere Fragenarten (Single Choice (4-Antworten), Bool'sche Frage (wahr/falsch), TextInput)
+	- Inheritance
+- Erweiterbar
+	- Inheritance
+- Punktesystem
+	- GameManager (Tracken)
+
+
+- (evtl. Schwierigkeitsgrad)

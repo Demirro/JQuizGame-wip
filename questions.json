@@ -1,0 +1,19 @@
+[{
+    "type": "bool",
+    "category": "computer science",
+    "prompt": "Java is object oriented!",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "computer science",
+    "prompt": "Java is bad!",
+    "correct_answer": "false"
+}, {
+    "type": "Single Choice",
+    "category": "geography",
+    "prompt": "Which country does Germany not have a border with?",
+    "answers": [
+        "France", "Poland", "Czechia", "Spain"
+    ],
+    "correct_answer": "Spain"
+}]
