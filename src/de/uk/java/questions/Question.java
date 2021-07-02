@@ -10,9 +10,6 @@ import javax.swing.JPanel;
 
 public abstract class Question extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String category; //maybe Enums
 	private String prompt;
@@ -22,6 +19,9 @@ public abstract class Question extends JPanel{
 		setPrompt(prompt);
 	}
 	
+	/**
+	 * Aufsetzen der Fragenanzeige in der GUI
+	 */
 	protected void defineJPanel() {
 		setBorder(BorderFactory.createLineBorder(Color.black, 2));
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));

@@ -19,6 +19,11 @@ public class Questions {
 	// removeQuestion
 	// getQuestion(index, prompt, fragenart)
 	
+	/**
+	 * Eine Frage in der Liste der Fragen anhand der Aussage/des Fragensatzes finden
+	 * @param prompt
+	 * @return
+	 */
 	public Question getQuestion(String prompt) {
 		for (Question question : questions) {
 			if (question.getPrompt().equals(prompt)) {
@@ -27,7 +32,11 @@ public class Questions {
 		}
 		return null;
 	}
-	
+	/**
+	 * Eine Frage in der Liste der Fragen anhand des Indizes
+	 * @param prompt
+	 * @return
+	 */
 	public Question getQuestion(int index) {
 		return questions.get(index);
 	}
