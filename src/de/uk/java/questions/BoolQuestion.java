@@ -32,16 +32,17 @@ public class BoolQuestion extends Question implements ActionListener{
 	protected void defineJPanel() {
 		JPanel buttonPanel = new JPanel();
 		JButton trueButton = new JButton("True");
-		trueButton.setActionCommand("True");
+		trueButton.setActionCommand("true");
 		trueButton.addActionListener(this);
 		buttonPanel.add(trueButton);
 		JButton falseButton = new JButton("False");
-		falseButton.setActionCommand("False");
+		falseButton.setActionCommand("false");
 		falseButton.addActionListener(this);
 		buttonPanel.add(falseButton);
 		super.defineJPanel();
 		add(buttonPanel);
 		
+		validate();
 	}
 	
 	public void setCorrectAnswer(boolean correctAnswer) {
@@ -63,12 +64,13 @@ public class BoolQuestion extends Question implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
-		case "True":
+		case "true":
 			System.out.println("true was pressed");
 			checkAnswer(e.getActionCommand());
 			break;
-		case "False":
+		case "false":
 			System.out.println("false was pressed");
+			checkAnswer(e.getActionCommand());
 			break;
 		default:
 			break;
@@ -76,9 +78,15 @@ public class BoolQuestion extends Question implements ActionListener{
 		
 	}
 
-	private void checkAnswer(String actionCommand) {
-		// TODO Auto-generated method stub
-		
+
+	@Override
+	public void checkAnswer(String actionCommand) {
+		boolean pressedAnswer = Boolean.parseBoolean(actionCommand);
+		if (pressedAnswer == correctAnswer) {
+			System.out.println("Correct");
+		} else {
+			System.out.println("Wrong");
+		}
 	}
 	
 }

@@ -40,4 +40,13 @@ public class Questions {
 	public Question getQuestion(int index) {
 		return questions.get(index);
 	}
+
+	public int size() {
+		// TODO Auto-generated method stub
+		return questions.size();
+	}
+
+	public void remove(Question currentQuestion) {
+		questions.remove(currentQuestion);
+	}
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import de.uk.java.gui.GUI;
+import de.uk.java.gui.UiCallbacks;
 import de.uk.java.questions.Questions;
 import de.uk.java.utils.QuestionFileReader;
 
@@ -13,13 +14,14 @@ public class QuizGame {
 		new QuizGame();
 	}
 	public QuizGame() {
-		GUI gui = new GUI();
-		Questions questions = new Questions();
-		questions.setQuestions(QuestionFileReader.readQuestions(new File("questions.json")));
-		
-		System.out.println(questions.getQuestions());
-		System.out.println(questions.getQuestion("Java is bad!"));
-		System.out.println(questions.getQuestion(0));
-		gui.getContentPane().add(questions.getQuestion(0));
+		UiCallbacks uiCallbacks = new UiCallbacks() {
+			
+			@Override
+			public Game newGame() {
+				Game game = new Game();
+				return game;
+			}
+		};
+		new GUI(uiCallbacks);
 	}
 }

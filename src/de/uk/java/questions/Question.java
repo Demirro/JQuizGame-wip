@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public abstract class Question extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
-	private String category; //maybe Enums
+	private String category; // maybe Enums
 	private String prompt;
 	
 	public Question (String category, String prompt) {
@@ -23,10 +23,21 @@ public abstract class Question extends JPanel{
 	 * Aufsetzen der Fragenanzeige in der GUI
 	 */
 	protected void defineJPanel() {
-		setBorder(BorderFactory.createLineBorder(Color.black, 2));
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		add(new JLabel(getPrompt()));
-		add(new JLabel(getCategory()));
+		
+		JPanel questionHeader = new JPanel();
+		questionHeader.setLayout(new BoxLayout(questionHeader, BoxLayout.PAGE_AXIS));
+		JLabel category = new JLabel(getCategory());
+		JLabel prompt = new JLabel(getPrompt());
+		
+		category.setAlignmentX(CENTER_ALIGNMENT);
+		prompt.setAlignmentX(CENTER_ALIGNMENT);
+			
+		questionHeader.add(category);
+		questionHeader.add(prompt);
+		
+		add(questionHeader);
+		validate();
 		//setSize(400, 400);
 	}
 
@@ -50,4 +61,6 @@ public abstract class Question extends JPanel{
 	public String toString() {
 		return "Prompt: " +getPrompt() + " Category: " + getCategory();
 	}
+	
+	public abstract void checkAnswer(String actionCommand);
 }
