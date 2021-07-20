@@ -14,9 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-public class BoolQuestion extends Question implements ActionListener{
+import de.uk.java.gui.GUI;
+
+public class BoolQuestion extends Question{
 
 	private boolean correctAnswer;
+	public JButton trueButton;
+	public JButton falseButton;
 	
 	public BoolQuestion(String category, String prompt, boolean correctAnswer) {
 		super(category, prompt);
@@ -31,13 +35,11 @@ public class BoolQuestion extends Question implements ActionListener{
 	@Override
 	protected void defineJPanel() {
 		JPanel buttonPanel = new JPanel();
-		JButton trueButton = new JButton("True");
-		trueButton.setActionCommand("true");
-		trueButton.addActionListener(this);
+		trueButton = new JButton("True");
+		trueButton.setActionCommand("Answer");
 		buttonPanel.add(trueButton);
-		JButton falseButton = new JButton("False");
-		falseButton.setActionCommand("false");
-		falseButton.addActionListener(this);
+		falseButton = new JButton("False");
+		falseButton.setActionCommand("Answer");
 		buttonPanel.add(falseButton);
 		super.defineJPanel();
 		add(buttonPanel);
@@ -49,8 +51,8 @@ public class BoolQuestion extends Question implements ActionListener{
 		this.correctAnswer = correctAnswer;
 	}
 	
-	public boolean getCorrectAnswer() {
-		return correctAnswer;
+	public String getCorrectAnswer() {
+		return Boolean.toString(correctAnswer);
 	}
 	
 	@Override
@@ -58,35 +60,11 @@ public class BoolQuestion extends Question implements ActionListener{
 		return super.toString() + " Correct Answer: " + getCorrectAnswer();
 	}
 	
-	/**
-	 * Aufsetzen der Actions für die Knöpfe
-	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		switch (e.getActionCommand()) {
-		case "true":
-			System.out.println("true was pressed");
-			checkAnswer(e.getActionCommand());
-			break;
-		case "false":
-			System.out.println("false was pressed");
-			checkAnswer(e.getActionCommand());
-			break;
-		default:
-			break;
-		}
-		
+	public void setActionListener(GUI gui) {
+		trueButton.addActionListener(gui);
+		falseButton.addActionListener(gui);
+		validate();
 	}
 
-
-	@Override
-	public void checkAnswer(String actionCommand) {
-		boolean pressedAnswer = Boolean.parseBoolean(actionCommand);
-		if (pressedAnswer == correctAnswer) {
-			System.out.println("Correct");
-		} else {
-			System.out.println("Wrong");
-		}
-	}
-	
 }

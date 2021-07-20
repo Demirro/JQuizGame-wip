@@ -39,4 +39,21 @@ public class Game {
 	private int calculateMaxWrongAnswers() {
 		return 3;
 	}
+
+	public Game checkAnswer(String string) {
+		if (string.equalsIgnoreCase(currentQuestion.getCorrectAnswer())) {
+		correctAnswers++;
+	} else {
+		wrongAnswers++;
+	}
+		nextQuestion();
+		return this;
+}
+	public int getCorrectAnswers() {
+		return correctAnswers;
+	}
+	
+	public int getLivesLeft() {
+		return maxWrongAnswers - wrongAnswers;
+	}
 }

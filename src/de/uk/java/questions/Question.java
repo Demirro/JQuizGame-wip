@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import de.uk.java.gui.GUI;
+
 public abstract class Question extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
@@ -41,6 +43,8 @@ public abstract class Question extends JPanel{
 		//setSize(400, 400);
 	}
 
+	public abstract String getCorrectAnswer();
+	
 	public String getPrompt() {
 		return prompt;
 	}
@@ -61,6 +65,6 @@ public abstract class Question extends JPanel{
 	public String toString() {
 		return "Prompt: " +getPrompt() + " Category: " + getCategory();
 	}
-	
-	public abstract void checkAnswer(String actionCommand);
+
+	public abstract void setActionListener(GUI gui);
 }

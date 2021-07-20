@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,6 +14,7 @@ import org.json.JSONTokener;
 
 import de.uk.java.questions.BoolQuestion;
 import de.uk.java.questions.Question;
+import de.uk.java.questions.SingleChoiceQuestion;
 
 public class QuestionFileReader {
 	
@@ -54,7 +56,10 @@ public class QuestionFileReader {
 		case ("bool"):
 			return new BoolQuestion(jobj.getString("category"), jobj.getString("prompt"), jobj.getBoolean("correct_answer"));
 		case ("Single Choice"):
-			return null;
+			return new SingleChoiceQuestion(jobj.getString("category"), jobj.getString("prompt"), 
+					jobj.getString("correct_answer"), jobj.getString("answer1"), 
+					jobj.getString("answer2"), jobj.getString("answer3"), 
+					jobj.getString("answer4"));
 		default:
 			System.err.println("Question Type was not recognized. Question Type: " + jobj.getString("type"));
 			return null;

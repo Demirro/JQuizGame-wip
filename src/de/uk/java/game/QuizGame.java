@@ -13,13 +13,20 @@ public class QuizGame {
 	public static void main(String[] args) {
 		new QuizGame();
 	}
+	
+	Game game;
 	public QuizGame() {
 		UiCallbacks uiCallbacks = new UiCallbacks() {
 			
 			@Override
 			public Game newGame() {
-				Game game = new Game();
+				game = new Game();
 				return game;
+			}
+
+			@Override
+			public Game checkAnswer(String string) {
+				return game.checkAnswer(string);
 			}
 		};
 		new GUI(uiCallbacks);
